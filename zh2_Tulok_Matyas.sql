@@ -4,7 +4,7 @@ where SZALLAS_NEV not like '%-%'
 
 select szoba_fk,
     FELNOTT_SZAM + GYERMEK_SZAM as 'férőhely', 
-    DENSE_RANK() over(order by count(*) desc, (FELNOTT_SZAM + GYERMEK_SZAM) asc) as 'rangsor'
+    dense_RANK() over(order by count(*) desc, (FELNOTT_SZAM + GYERMEK_SZAM),szoba_fk) as 'rangsor'
 from Foglalas
 GROUP BY SZOBA_FK, FELNOTT_SZAM + GYERMEK_SZAM
 
